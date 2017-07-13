@@ -1,0 +1,32 @@
+#!/bin/bash
+# studo
+# 2017_07_13
+MOS_PATH=/usr/lib/monitos
+MOS_CONFIG_PATH=/etc/monitos
+APT=$(which apt-get)
+MOSCTL=$(which mosctl)
+MOSUP="$MOSCTL update"
+ECHO=$(which echo)
+WGET=$(which wget)
+DPKG=$(which dpkg)
+SCTL=$(which systemctl)
+ENABLE="$SCTL enable "
+UPDATE="$APT update"
+LIST="apt list --upgradable"
+UPGRADE="$APT upgrade"
+ADD='add-apt-repository -y '
+DPKG=$DPKG' -i | grep monitos'
+DIFF=$(which diff)
+MOS_DIFF="$DIFF -Naur monitos.conf.php monitos.conf.dist.php"
+
+# MAIN
+$DPKG
+$UPDATE
+$LIST
+# $ASK
+$UPGRADE
+$MOSUP
+$DPKG
+cd $MOS_CONFIG_PATH
+$MOS_DIFF
+
