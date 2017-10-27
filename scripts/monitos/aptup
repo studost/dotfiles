@@ -1,6 +1,7 @@
 #!/bin/bash
 # studo
 # 2017_07_13
+# debugging with set -x
 MOS_PATH=/usr/lib/monitos
 MOS_CONFIG_PATH=/etc/monitos
 APT=$(which apt-get)
@@ -15,18 +16,18 @@ UPDATE="$APT update"
 LIST="apt list --upgradable"
 UPGRADE="$APT upgrade"
 ADD='add-apt-repository -y '
-DPKG=$DPKG' -i | grep monitos'
+DPKG='dpkg -l | grep monitos'
 DIFF=$(which diff)
 MOS_DIFF="$DIFF -Naur monitos.conf.php monitos.conf.dist.php"
 
 # MAIN
-$DPKG
+eval $DPKG
 $UPDATE
 $LIST
 # $ASK
 $UPGRADE
 $MOSUP
-$DPKG
 cd $MOS_CONFIG_PATH
 $MOS_DIFF
+eval $DPKG
 
