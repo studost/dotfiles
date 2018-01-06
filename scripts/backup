@@ -1,0 +1,35 @@
+#!/bin/bash
+############################################################
+# backup
+# 2017_10_28 studo
+# CHANGELOG
+#
+############################################################
+# Reinstall now
+#rsync --progress /path/to/user/profile/backup/here /home/`whoami`
+#sudo apt-key add ~/Repo.keys
+#sudo cp -R ~/sources.list* /etc/apt/
+#sudo apt-get update
+#sudo apt-get install dselect
+#sudo dpkg --set-selections < ~/Package.list
+#sudo dselect
+############################################################
+DPKG=$(which dpkg)
+
+USER='studo'
+MYPATH='/home'
+BAKPATH='/mnt/c/projects/wsl/'
+LDEST=${MYPATH}/${USER}/packages/
+TODAY=$(date +%j)
+
+#
+$DPKG --get-selections > ${LDEST}Package.list
+sudo cp -R /etc/apt/sources.list* ${LDEST}
+sudo apt-key exportall > ${LDEST}Repo.keys
+# rsync --progress /home/${USER} /backup/${USER}/${TODAY}
+
+# Action
+cd $MYPATH
+tar --exclude=.git --exclude=.svn --exclude=.cache -cvzf ${BAKPATH}${USER}-${TODAY}.tar.gz ${USER}
+
+

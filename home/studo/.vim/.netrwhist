@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/cygdrive/x/projects/gitlab/monitos-core/plugins'
+let g:netrw_dirhist_2='/cygdrive/x/projects/gitlab/monitos-addon-influxdb/features'
+let g:netrw_dirhist_3='/cygdrive/c/vagrant/vagrant_monitos_fresh'
+let g:netrw_dirhist_4='/cygdrive/x/projects/gitlab/monitos-addon-sap-rfc/public/include'
+let g:netrw_dirhist_5='/cygdrive/x/projects/gitlab/monitoring-sets/monitos-set-ms-azure/svobjects'
+let g:netrw_dirhist_6='/cygdrive/x/snagview3/inventory'
+let g:netrw_dirhist_7='/cygdrive/x/projects/gitlab/monitoring-sets/monitos-set-nedi-health/plugins'
+let g:netrw_dirhist_8='/mnt/x/monitos4/monitos-gateway'
+let g:netrw_dirhist_9='/mnt/x/projects/gitlab/monitoring-sets/monitos-set-wmi/.lsyncd'

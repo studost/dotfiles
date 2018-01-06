@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+# studo, 2017_07_14
+# bootstrap_monitos.sh
+# Changelog:
+# 2017_08_28, studo, added new url for monitos core version 0.6.0 
+APT=$(which apt-get)
+ECHO=$(which echo)
+WGET=$(which wget)
+DPKG=$(which dpkg)
+SCTL=$(which systemctl)
+TIMECTL=$(which timedatectl)
+ENABLE="$SCTL enable "
+UPDATE="$APT update"
+INSTALL="$APT install -y "
+ADD="add-apt-repository -y "
+DPKG="$DPKG -i"
+
+
+# Monitos4 Debian repos
+# http://confluence.freicon.swarmcloud.de/display/MOS/Monitos4-Installation+mit+dem+Ubuntu+monitos-core-Paket
+$ECHO 'deb [trusted=yes] http://deb.freicon.swarmcloud.de/monitos core-master main' > /etc/apt/sources.list.d/core-master.list
+$ECHO 'deb [trusted=yes] http://deb.freicon.swarmcloud.de/monitos monitos-utils-ubuntu main' > /etc/apt/sources.list.d/monitos-utils.list
+$ECHO 'deb [trusted=yes] http://deb.freicon.swarmcloud.de/monitos monitos-addon-nedi-ubuntu main' > /etc/apt/sources.list.d/monitos-addon-nedi.list
+$ECHO 'deb [trusted=yes] http://deb.freicon.swarmcloud.de/monitos monitos-addon-sap-rfc-ubuntu main' > /etc/apt/sources.list.d/monitos-addon-sap-rfc.list
+$ECHO 'deb [trusted=yes] http://deb.freicon.swarmcloud.de/monitos monitos-addon-influxdb-ubuntu main' > /etc/apt/sources.list.d/monitos-addon-influxdb.list
+$ECHO 'deb [trusted=yes] http://deb.freicon.swarmcloud.de/monitos monitos-addon-grafana-ubuntu main' > /etc/apt/sources.list.d/monitos-addon-grafana.list
+$ECHO 'deb [trusted=yes] http://deb.freicon.swarmcloud.de/monitoring-sets monitos-set-localhealth-ubuntu main' > /etc/apt/sources.list.d/monitos-set-localhealth.list
+$ECHO 'deb [trusted=yes] http://deb.freicon.swarmcloud.de/monitoring-sets monitos-set-wmi-ubuntu main' > /etc/apt/sources.list.d/monitos-set-wmi.list
+$ECHO 'deb [trusted=yes] http://deb.freicon.swarmcloud.de/monitoring-sets monitos-set-win-nrpe-ubuntu main' > /etc/apt/sources.list.d/monitos-set-win-nrpe.list
+$ECHO 'deb [trusted=yes] http://deb.freicon.swarmcloud.de/monitoring-sets monitos-set-vmware-esx-ubuntu main' > /etc/apt/sources.list.d/monitos-set-vmware-esx.list
+$ECHO 'deb [trusted=yes] http://deb.freicon.swarmcloud.de/monitoring-sets monitos-set-network-ubuntu main' > /etc/apt/sources.list.d/monitos-set-network.list
+$ECHO 'deb [trusted=yes] http://deb.freicon.swarmcloud.de/monitoring-sets monitos-set-nwc-health-ubuntu main' > /etc/apt/sources.list.d/monitos-set-nwc-health.list
+$ECHO 'deb [trusted=yes] http://deb.freicon.swarmcloud.de/monitoring-sets monitos-set-demo-config-ubuntu main' > /etc/apt/sources.list.d/monitos-addon-demo-config.list
+$ECHO 'deb [trusted=yes] http://deb.freicon.swarmcloud.de/monitos cli-master main' > /etc/apt/sources.list.d/monitos-cli-master.list
+$ECHO 'deb [trusted=yes] http://deb.freicon.swarmcloud.de/monitos checkplugins-master main' > /etc/apt/sources.list.d/monitos-checkplugins-master.list
+
+$UPDATE
+
+
+
